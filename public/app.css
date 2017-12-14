@@ -45,6 +45,16 @@ select {
 	border: 0px;
 	height: 34px;
 	color: white;
+	cursor: default;
+}
+
+.btn.btn-primary[disabled]:hover] {
+	background-color: #b3b3b3;
+	border-color: #b3b3b3;
+	border: 0px;
+	height: 34px;
+	color: white;
+	cursor: default;
 }
 
 .btn.btn-primary.btn-name[disabled] {
@@ -53,6 +63,7 @@ select {
 	border: 0px;
 	height: 80px;
 	color: white;
+	cursor: default;
 }
 
 .character {
@@ -84,7 +95,7 @@ select {
 }
 
 .hpBox {
-	width: 50px;
+	width: 75px;
 	border: 1px;
 
 }
