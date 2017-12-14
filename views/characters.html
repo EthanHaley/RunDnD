@@ -1,0 +1,33 @@
+<div class="col-md-12">
+	<div id="nav"><script>$('#nav').load('/navbar.html');</script></div>
+	<div class="text-center" id="characters">
+			<button class="btn btn-lg btn-primary home-btn" onclick="editCharacter()">Create New Character</button>
+			<br />
+			<br /> 
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Race</th>
+						<th>Class</th>
+						<th>Edit/Delete?</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#each characters}}
+					<tr>
+						<input type="hidden" value="{{_id}}" id="id-{{@index}}">
+						<td>{{name}}</td>
+						<td>{{race}}</td>
+						<td>{{class}}</td>
+						<td>
+							<button class="btn btn-info" onclick="editCharacter({{@index}})">Edit</button>
+							<button class="btn btn-danger" onclick="deleteCharacter({{@index}})">Delete</button>
+						</td>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

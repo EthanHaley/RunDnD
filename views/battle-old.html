@@ -1,0 +1,87 @@
+<div class="col-md-12">
+	<div id="nav"><script>$('#nav').load('/navbar.html');</script></div>
+	<div id="battle-characters">
+		{{#each characters}}
+		<div class="container text-center character" id="character-{{@index}}">
+			<button class="btn btn-lg btn-primary btn-name" style="font-size: 50px;"disabled>{{name}}</button>
+			<div class="clearfix"></div>
+			<div class="btn-group">
+				<button class="btn btn-primary" disabled>AC: {{ac}}</button> 
+				<button class="btn btn-primary" disabled>Prof: {{proficiency}}</button>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group">
+				<button class="btn btn-primary" disabled>Str: {{str}}</button> 
+				<button class="btn btn-primary" disabled>Dex: {{dex}}</button> 
+				<button class="btn btn-primary" disabled>Con: {{con}}</button>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group">
+				<button class="btn btn-primary" disabled>Int: {{int}}</button>
+				<button class="btn btn-primary" disabled>Wis: {{wis}}</button>
+				<button class="btn btn-primary" disabled>Char: {{char}}</button>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group">
+				<input type="hidden" value="{{hp}}" id="hp-{{@index}}">
+				<input type="hidden" value="{{hp}}" id="max-hp-{{@index}}">
+				<button class="btn btn-md btn-primary" id="hpBtn-{{@index}}" disabled>Hit Points: {{hp}}</button>
+				<button class="btn btn-danger" onclick="subHp({{@index}})"><b>-</b></button>
+				<input type="number" class="btn form-control hpBox" id="hpAddSub-{{@index}}">
+				<button class="btn btn-danger" onclick="addHp({{@index}});"><b>+</b></button>
+			</div>
+			<br />
+			<br />
+			<div class="clearfix"></div>
+			<div class="btn-group" data-toggle="button">
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Blinded
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Charmed
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Deafened
+				</label>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group" data-toggle="button">
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Frightened
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Grappled
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Incapacitated
+				</label>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group" data-toggle="button">
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Invisible
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Paralyzed
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Poisoned
+				</label>
+			</div>
+			<div class="clearfix"></div>
+			<div class="btn-group" data-toggle="button">
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Restrained
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Stunned
+				</label>
+				<label class="btn btn-secondary">
+					<input type="checkbox" class="hidden">Unconcious
+				</label>
+			</div>
+			<hr>
+		</div>
+		{{/each}}
+	</div>
+</div>

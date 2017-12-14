@@ -1,0 +1,16 @@
+<div class="col-md-12">
+	<div id="nav"><script>$('#nav').load('/navbar.html');</script></div>
+	<div id="battle-characters">
+		{{#each characters}}
+			<div id="character-{{@index}}">
+				<input type="hidden" value="{{this}}" id="character-{{@index}}-id">
+				<script>
+					var character = {};
+					character.id = $('#character-{{@index}}-id').val();
+					console.log(character);
+					$('#character-{{@index}}').load('/battle-template.html', character);
+				</script>
+			</div>
+		{{/each}}
+	</div>
+</div>

@@ -1,0 +1,110 @@
+<div class="col-md-12">
+	<div id="nav"><script>$('#nav').load('/navbar.html');</script></div>
+	<h1>Create/Edit Character</h1>
+	<input type="hidden" value="{{_id}}" id="charId">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input type="text" class="form-control" value="{{name}}" id="name">
+	</div>
+
+	<div class="form-group">
+		<label for="hp">Hit Points</label>
+		<input type="number" class="form-control" value="{{hp}}" id="hp">
+	</div>
+
+	<div class="form-group">
+		<label for="ac">Armor Class</label>
+		<input type="number" class="form-control" value="{{ac}}" id="ac">
+	</div>
+
+	<div class="form-group">
+		<label for="speed">Speed</label>
+		<input type="number" class="form-control" value="{{speed}}" id="speed">
+	</div>
+
+	<div class="form-group">
+		<label for="proficiency">Proficiency</label>
+		<input type="number" class="form-control" value="{{proficiency}}" id="proficiency">
+	</div>
+
+	<div class="form-group">
+		<label for="str">Strength</label>
+		<input type="number" class="form-control" value="{{str}}" id="str">
+	</div>
+
+	<div class="form-group">
+		<label for="dex">Dexterity</label>
+		<input type="number" class="form-control" value="{{dex}}" id="dex">
+	</div>
+
+	<div class="form-group">
+		<label for="con">Constitution</label>
+		<input type="number" class="form-control" value="{{con}}" id="con">
+	</div>
+
+	<div class="form-group">
+		<label for="int">Intelligence</label>
+		<input type="number" class="form-control" value="{{int}}" id="int">
+	</div>
+
+	<div class="form-group">
+		<label for="wis">Wisdom</label>
+		<input type="number" class="form-control" value="{{wis}}" id="wis">
+	</div>
+
+	<div class="form-group">
+		<label for="char">Charisma</label>
+		<input type="number" class="form-control" value="{{char}}" id="char">
+	</div>
+
+	<div class="form-group">
+		<label for="class">Class</label>
+		<select class="form-control" id="class">
+			<option value="{{class}}">{{class}}</option>
+			<option value="Barbarian">Barbarian</option>
+			<option value="Bard">Bard</option>
+			<option value="Cleric">Cleric</option>
+			<option value="Druid">Druid</option>
+			<option value="Fighter">Fighter</option>
+			<option value="Monk">Monk</option>
+			<option value="Paladin">Paladin</option>
+			<option value="Ranger">Ranger</option>
+			<option value="Rogue">Rogue</option>
+			<option value="Sorcerer">Sorcerer</option>
+			<option value="Warlock">Warlock</option>
+			<option value="Wizard">Wizard</option>
+			<option value="Monster">Monster</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="race">Race</label>
+		<select class="form-control" id="race">
+			<option value="{{race}}">{{race}}</option>
+			<option value="Dwarf">Dwarf</option>
+			<option value="Elf">Elf</option>
+			<option value="Halfling">Halfling</option>
+			<option value="Human">Human</option>
+			<option value="Dragonborn">Dragonborn</option>
+			<option value="Gnome">Gnome</option>
+			<option value="Half-elf">Half-elf</option>
+			<option value="Half-orc">Half-orc</option>
+			<option value="Tiefling">Tiefling</option>
+			<option value="Monster">Monster</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="description">Description</label>
+		<input type="text" class="form-control" value="{{description}}" id="description">
+	</div>
+	
+	<!--
+	<div class="form-group">
+		<label for="image">Image</label>
+		<input type="file" class="form-control" id="image">
+	</div> 
+	-->
+
+	<button class="btn" onclick="saveCharacter()">Submit</button>
+</div>

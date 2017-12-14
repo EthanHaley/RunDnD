@@ -1,3 +1,81 @@
 body {
-	font-family: "Trebuchet MS";
+	font-family: "Tahoma";
+}
+
+.btn.btn-secondary.active,
+.btn.btn-secondary:active {
+	background-color: #ff0000;
+	border-color: #ff0000;
+}
+
+.btn.btn-secondary {
+	background-color: #4d4d4d;
+	border-color: #4d4d4d;
+	color: white;
+}
+
+.btn.btn-primary[disabled] {
+	background-color: #b3b3b3;
+	border-color: #b3b3b3;
+	border: 0px;
+	height: 34px;
+	color: white;
+}
+
+.btn.btn-primary.btn-name[disabled] {
+	background-color: black;
+	border-color: black;
+	border: 0px;
+	height: 80px;
+	color: white;
+}
+
+.character {
+	background-color: black
+}
+
+.hpBox {
+	width: 50px;
+	border: 1px;
+
+}
+
+.home-btn {
+	background-color: black;
+	border-color: black;
+	border: 0px;
+	color: white;
+	margin: 10px;
+}
+
+.startBtn {
+	background-color: black;
+	border-color: black;
+	border: 0px;
+	color: white;
+	margin: 10px;
+}
+
+table {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+hr {
+	border-color: red;
+}
+
+h1 {
+	color: #b3b3b3;
+}
+
+input {
+	max-width: 300px;
+}
+
+select {
+	max-width: 300px;
 }
