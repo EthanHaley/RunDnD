@@ -130,4 +130,9 @@ function startBattle() {
 	$('body').load('/startBattle', context);
 }
 
+function roll(num) {
+	var retString = '#d' + num;
+	$(retString).val((Math.floor(Math.random()*num)) + 1);
+}
+
 loadPage();

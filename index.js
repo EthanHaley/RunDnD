@@ -86,6 +86,10 @@ app.get('/encounter.html', function(req, res) {
 	});
 });
 
+app.get('/dice-modal.html', function(req, res) {
+	res.render('dice-modal');
+});
+
 app.post('/editCharacter.html', function(req, res) {
 	var request = req.body;
 	if(!request.charId) { res.render('character') }
@@ -205,7 +209,9 @@ app.post('/battle-template.html', function(req, res) {
 		if(err) throw err;
 		db.collection("characters").findOne({'_id': ObjectId(request.id.toString())}, function(err, result) {
 			if(err) throw err;
-			res.render('battle-template', result);
+			var character = result;
+			character.index = request.index;
+			res.render('battle-template', character);
 		});
 	});
 });

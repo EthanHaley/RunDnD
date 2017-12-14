@@ -70,6 +70,19 @@ select {
 	border-color: black;
 }
 
+.btn.btn-dice {
+	background-color: black;
+	border-color: black;
+	color: red;
+}
+
+.btn.btn-dice-modal {
+	background-color: black;
+	border-color: black;
+	color: white;
+	margin-right: 10px;
+}
+
 .hpBox {
 	width: 50px;
 	border: 1px;

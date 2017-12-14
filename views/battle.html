@@ -1,13 +1,18 @@
 <div class="col-md-12">
 	<div id="nav"><script>$('#nav').load('/navbar.html');</script></div>
-	<div id="battle-characters">
+	<div id="dice-modal" class="modal fade" role="dialog">
+		<script>$('#dice-modal').load('/dice-modal.html');</script>
+	</div>
+	<div class="text-center" id="battle-characters">
+		<button class="btn btn-lg btn-primary btn-dice" data-toggle="modal" data-target="#dice-modal">Need some dice?</button>
+		<br /><br />
 		{{#each characters}}
 			<div id="character-{{@index}}">
 				<input type="hidden" value="{{this}}" id="character-{{@index}}-id">
 				<script>
 					var character = {};
 					character.id = $('#character-{{@index}}-id').val();
-					console.log(character);
+					character.index = {{@index}};
 					$('#character-{{@index}}').load('/battle-template.html', character);
 				</script>
 			</div>
