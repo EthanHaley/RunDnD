@@ -4,8 +4,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
-var Promise = require('promise');
-var url = "mongodb://localhost:27017/rundnd";
 
 var uri = "mongodb://ehaley:Chr0n0k33p3r@ethanhaley-shard-00-00-n5zg9.mongodb.net:27017,ethanhaley-shard-00-01-n5zg9.mongodb.net:27017,ethanhaley-shard-00-02-n5zg9.mongodb.net:27017/test?ssl=true&replicaSet=EthanHaley-shard-0&authSource=admin";
 
@@ -13,11 +11,13 @@ var port = 1357;
 var stylesheet = fs.readFileSync('public/app.css');
 var app = express();
 
+//Setup the express router to handle Handlebars templating automatically
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
+//Begin routing function
 app.get('/', function(req, res) {
 	fs.readFile('public/index.html', function(err, body) {
 		res.end(body);
@@ -43,6 +43,23 @@ app.get('/home.html', function(req, res) {
 	res.render('home');
 });
 
+app.get('/character.html', function(req, res) {
+	res.render('character');
+});
+
+app.get('/characters.html', function(req, res) {
+	MongoClient.connect(uri, function(err, db) {
+		if(err) throw err;
+		db.collection("characters").find({}).toArray(function(err, result) {
+			if(err) throw err;
+			var context = {};
+			context.characters = result;
+			res.render('characters', context)
+			db.close();
+		});
+	});
+});
+
 app.get('/monsters.html', function(req, res) {
 	MongoClient.connect(uri, function(err, db) {
 		if(err) throw err;
@@ -56,8 +73,17 @@ app.get('/monsters.html', function(req, res) {
 	});
 });
 
-app.get('/character.html', function(req, res) {
-	res.render('character');
+app.get('/encounter.html', function(req, res) {
+	MongoClient.connect(uri, function(err, db) {
+		if(err) throw err;
+		db.collection("characters").find({}).toArray(function(err, result) {
+			if(err) throw err;
+			var context = {};
+			context.characters = result;
+			res.render('encounter', context)
+			db.close();
+		});
+	});
 });
 
 app.post('/editCharacter.html', function(req, res) {
@@ -88,65 +114,6 @@ app.post('/deleteCharacter.html', function(req, res) {
 				res.render('characters', context)
 				db.close();
 			});
-		});
-	});
-})
-
-
-app.post('/startBattle', function(req, res) {
-	var request = req.body;
-	context = {};
-	context.characters = [];
-	for(key in request) {
-		context.characters.push(request[key]);
-	}
-	res.render('battle', context);
-	/*MongoClient.connect(uri, function(err, db) {
-		if(err) throw err;
-		request.keys()
-		db.collection("characters").find({'_id': {'in': }}).toArray(function(err, result) {
-			if(err) throw err;
-			var context = {};
-			context.characters = result;
-			res.render('battle', context)
-			db.close();
-		});
-	});*/
-});
-
-app.post('/battle-template.html', function(req, res) {
-	var request = req.body;
-	MongoClient.connect(uri, function(err, db) {
-		if(err) throw err;
-		db.collection("characters").findOne({'_id': ObjectId(request.id.toString())}, function(err, result) {
-			if(err) throw err;
-			res.render('battle-template', result);
-		});
-	});
-});
-
-app.get('/characters.html', function(req, res) {
-	MongoClient.connect(uri, function(err, db) {
-		if(err) throw err;
-		db.collection("characters").find({}).toArray(function(err, result) {
-			if(err) throw err;
-			var context = {};
-			context.characters = result;
-			res.render('characters', context)
-			db.close();
-		});
-	});
-});
-
-app.get('/encounter.html', function(req, res) {
-	MongoClient.connect(uri, function(err, db) {
-		if(err) throw err;
-		db.collection("characters").find({}).toArray(function(err, result) {
-			if(err) throw err;
-			var context = {};
-			context.characters = result;
-			res.render('encounter', context)
-			db.close();
 		});
 	});
 });
@@ -222,6 +189,26 @@ app.post('/saveCharacter', function(req, res) {
 	}
 });
 
+app.post('/startBattle', function(req, res) {
+	var request = req.body;
+	context = {};
+	context.characters = [];
+	for(key in request) {
+		context.characters.push(request[key]);
+	}
+	res.render('battle', context);
+});
+
+app.post('/battle-template.html', function(req, res) {
+	var request = req.body;
+	MongoClient.connect(uri, function(err, db) {
+		if(err) throw err;
+		db.collection("characters").findOne({'_id': ObjectId(request.id.toString())}, function(err, result) {
+			if(err) throw err;
+			res.render('battle-template', result);
+		});
+	});
+});
 
 app.listen(port, function() {
 	console.log('App listening on port ' + port);

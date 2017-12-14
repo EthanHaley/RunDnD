@@ -47,7 +47,7 @@ function addToEncounter() {
 	var charCount = $('#char-count').val();
 	var selectedId = $('#addCharacter').val();
 	var selectedCharacter = $('#addCharacter option:selected').attr('id');
-	var trString = '<tr id="row-' + charCount + '"><td>' + selectedCharacter + '</td><td><input type="number" id="' + selectedId + '" required></td><td><button class="btn btn-danger" onclick="removeFromInit(' + charCount + ')">X</button></td></tr>';
+	var trString = '<tr id="row-' + charCount + '"><td>' + selectedCharacter + '</td><td><input class="init-num" type="number" id="' + selectedId + '" required></td><td><button class="btn btn-danger" onclick="removeFromInit(' + charCount + ')">X</button></td></tr>';
 	$('#char-count').val(Number($('#char-count').val()) + 1);
 	if (($('#char-count').val()) > 1) {
 		$('#start-button').attr('disabled', false);

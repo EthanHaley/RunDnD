@@ -2,6 +2,31 @@ body {
 	font-family: "Tahoma";
 }
 
+table {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+hr {
+	border-color: red;
+}
+
+
+h2 {
+	font-size: 80px;
+}
+
+input {
+	max-width: 200px;
+}
+
+select {
+	max-width: 200px;
+}
+
 .btn.btn-secondary.active,
 .btn.btn-secondary:active {
 	background-color: #ff0000;
@@ -34,6 +59,17 @@ body {
 	background-color: black
 }
 
+.btn.btn-info {
+	background-color: #b3b3b3;
+	border-color: #b3b3b3;
+	color: white;
+}
+
+.btn-info:hover {
+	background-color: black;
+	border-color: black;
+}
+
 .hpBox {
 	width: 50px;
 	border: 1px;
@@ -48,6 +84,18 @@ body {
 	margin: 10px;
 }
 
+.home-btn:hover {
+	background-color: red;
+	border-color: black;
+	border: 0px;
+	color: white;
+	margin: 10px;
+}
+
+.init-num {
+	max-width: 100px;
+}
+
 .startBtn {
 	background-color: black;
 	border-color: black;
@@ -56,26 +104,6 @@ body {
 	margin: 10px;
 }
 
-table {
-	text-align: center;
-}
-
-th {
-	text-align: center;
-}
-
-hr {
-	border-color: red;
-}
-
-h1 {
-	color: #b3b3b3;
-}
-
-input {
-	max-width: 300px;
-}
-
-select {
-	max-width: 300px;
+#create-form {
+	max-width: 400px;
 }
