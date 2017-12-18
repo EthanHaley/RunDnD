@@ -1,3 +1,4 @@
+//Dependencies
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
@@ -5,8 +6,10 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 
-var uri = "mongodb://ehaley:Chr0n0k33p3r@ethanhaley-shard-00-00-n5zg9.mongodb.net:27017,ethanhaley-shard-00-01-n5zg9.mongodb.net:27017,ethanhaley-shard-00-02-n5zg9.mongodb.net:27017/test?ssl=true&replicaSet=EthanHaley-shard-0&authSource=admin";
+//DB connection string, replace <password> with the db password, or connect using a different URI string
+var uri = "mongodb://ehaley:<password>@ethanhaley-shard-00-00-n5zg9.mongodb.net:27017,ethanhaley-shard-00-01-n5zg9.mongodb.net:27017,ethanhaley-shard-00-02-n5zg9.mongodb.net:27017/test?ssl=true&replicaSet=EthanHaley-shard-0&authSource=admin";
 
+//Server configuration
 var port = 1357;
 var stylesheet = fs.readFileSync('public/app.css');
 var app = express();
@@ -17,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
-//Begin routing function
+//Begin routing functions
 app.get('/', function(req, res) {
 	fs.readFile('public/index.html', function(err, body) {
 		res.end(body);
@@ -216,6 +219,7 @@ app.post('/battle-template.html', function(req, res) {
 	});
 });
 
+//Start server
 app.listen(port, function() {
 	console.log('App listening on port ' + port);
 });
